@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>FFCMS - система управления содержимым сайта</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="FFCMS - быстрая, гибкая система управления содержимым сайта. Используются технологии: php 7, mysql, redis cache, mvc.">
+    <meta name="keywords" content="ffcms,cms,цмс,website,php,создать сайт,php ядро,framework,фреймворк,mysql,postgresql,система,сайт">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- highlight js -->
+    <link rel="stylesheet" href="css/hljs/default.css">
+    <link rel="stylesheet" href="css/hljs/tomorrow-night.css">
+    <!-- Main css -->
+    <link href="css/style.min.css" rel="stylesheet">
+    <!-- font awesome -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target="#navbar" data-offset="25">
+    <div class="nav-menu fixed-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-dark navbar-expand-lg">
+                        <a class="navbar-brand" href="#about">FFCMS</a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                        <div class="collapse navbar-collapse" id="navbar">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item"> <a class="nav-link active" href="#about">О СИСТЕМЕ <span class="sr-only">(current)</span></a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#features">ВОЗМОЖНОСТИ</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#launch-way">ЗАГРУЗИТЬ</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="https://dev.ffcms.org">СООБЩЕСТВО</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="https://github.com/phpffcms" target="_blank">GITHUB</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        ЕЩЕ
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#news">Новости</a>
+                                        <a class="dropdown-item" href="#contact">Контакты</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="bg-gradient" id="about">
+        <div class="container mt-5">
+            <h1>FFCMS - система управления сайтом</h1>
+            <img src="images/fflogo.png" class="img-fluid" style="max-height: 450px;" alt="ffcms logo image"/>
+            <p class="tagline">FFCMS - быстрая, расширяемая система управления содержимым сайта, построенная на: php 7.1+, mysql/pgsql, redis caching. MVC и composer внутри. Лицензия свободного ПО <a href="#" data-toggle="modal" data-target="#mitModal">MIT</a>.</p>
+        </div>
+        <div class="mt-5 pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-12">
+                        <h2 style="color: #ebedfa">Требования</h2>
+                        <ul style="text-align: left;">
+                            <li>php-fpm + nginx or apache2 + modphp</li>
+                            <li>PHP 7.1 или новее</li>
+                            <li>mysql 5.5 / postgres 9.2 или новее</li>
+                            <li>php_pdo, php_gd2, php_curl, php_mbstring, php_zip</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-8 col-12">
+                        <h2 style="color: #ebedfa">Установка composer</h2>
+                        <pre>
+                            <code class="bash" style="text-align: left;">composer create-project phpffcms/ffcms ./path/to/document_root 3.1 --keep-vcs --prefer-dist
+composer update --optimize-autoloader
+php console.php main:install</code>
+                        </pre>
+                        <small>или скачайте <a href="#" data-toggle="modal" data-target="#downloadModal">ffcms.zip</a> автономный набор установщика.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- used packages and partners -->
+    <div class="my-5">
+        <div class="container text-center">
+            <a href="https://getcomposer.org/" target="_blank"><img src="images/vendors/composer.png" alt="composer logo" class="img-fluid"></a>
+            <a href="https://symfony.com/doc/current/components/http_foundation.html" target="_blank"><img src="images/vendors/symfony.png" alt="symfony logo" class="img-fluid"></a>
+            <a href="https://laravel.com/docs/5.7/eloquent" target="_blank"><img src="images/vendors/laravel.jpg" alt="laravel logo" class="img-fluid"></a>
+            <a href="https://getbootstrap.com/" target="_blank"><img src="images/vendors/bootstrap.jpg" alt="bootstrap logo" class="img-fluid"></a>
+        </div>
+    </div>
+
+    <!-- ffcms features -->
+    <div class="section light-bg" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h3>Основные достоинства</h3>
+                <small>Почему вам следует попробовать FFCMS?</small>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <div class="card features">
+                        <div class="card-body">
+                            <div class="media">
+                                <i class="fa fa-bolt gradient-fill fa-4x mr-3"></i>
+                                <div class="media-body">
+                                    <h4 class="card-title">Производительность</h4>
+                                    <p class="card-text">Низкое потребление ресурсов и высокая скорость генерации страниц. Используется в системах с высокой нагрузкой</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="card features">
+                        <div class="card-body">
+                            <div class="media">
+                                <span class="fa fa-gears gradient-fill fa-4x mr-3"></span>
+                                <div class="media-body">
+                                    <h4 class="card-title">Кастомизация</h4>
+                                    <p class="card-text">MVC архитектура и composer позволяют легко расширять или изменять ваш сайт. Шаблоны, приложения, виджеты!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="card features">
+                        <div class="card-body">
+                            <div class="media">
+                                <span class="fa fa-language gradient-fill fa-4x mr-3"></span>
+                                <div class="media-body">
+                                    <h4 class="card-title">Интернализация</h4>
+                                    <p class="card-text">Полное покрытие множественных языковых локалей - i18n. Мультиязычность на сайте "из коробки".</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-12 col-lg-4">
+                    <div class="card features">
+                        <div class="card-body">
+                            <div class="media">
+                                <i class="fa fa-bar-chart gradient-fill fa-4x mr-3"></i>
+                                <div class="media-body">
+                                    <h4 class="card-title">СЕО</h4>
+                                    <p class="card-text">Базовая поддержка всех основных механизмо, необходимых для СЕО-оптимизации вашего сайта!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="card features">
+                        <div class="card-body">
+                            <div class="media">
+                                <span class="fa fa-tablet gradient-fill fa-4x mr-3"></span>
+                                <div class="media-body">
+                                    <h4 class="card-title">Адаптивность</h4>
+                                    <p class="card-text">Система основана на адаптивном визуальном фреймворке bootstrap. Все интерфейсы сайта адаптируются под любой тип устройств!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="card features">
+                        <div class="card-body">
+                            <div class="media">
+                                <span class="fa fa-shield gradient-fill fa-4x mr-3"></span>
+                                <div class="media-body">
+                                    <h4 class="card-title">Безопасность</h4>
+                                    <p class="card-text">Никаких sql-инъекций, xss скриптинга или csrf подмены отправки форм! Только ORM фреймворк для общения с БД и токинайзер форм!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section light-bg">
+        <div class="container">
+            <div class="section-title">
+                <small>ВОЗМОЖНОСТИ</small>
+                <h3>В базовый пакет FFCMS входит</h3>
+            </div>
+
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#system">Система</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#apps">Приложения</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#widgets">Виджеты</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="system">
+                    <div class="d-flex flex-column flex-lg-row">
+                        <img src="images/features-ico.png" alt="system features icon" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0 d-none d-sm-block" style="max-width: 250px;">
+                        <div>
+
+                            <h2>Системные возможности</h2>
+                            <ul>
+                                <li>Настройки: графический и удобный интерфейс для управления настройками системы</li>
+                                <li>Файлы: управление вашими файлами в специальном интерфейсе</li>
+                                <li>Антивирус: проверка файлов системы и поиск потенциально опасных, зараженных файлов или выгруженныш веб-шеллов</li>
+                                <li>Маршрутизация: управление картой маршрутов(URI) вашего сайта в граф. интерфейсе</li>
+                                <li>Обновления: алгоритм загрузки и установки обновлений системы</li>
+                                <li>Приложения и виджеты: управление расширениями вашего сайта и установка новых</li>
+                                <li>Магазин: поиск и установка новых расширений для вашего сайта</li>
+                                <li>Статистика: подключите yandex.metrika api для мониторинга статистики вашего сайта</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="apps">
+                    <div class="d-flex flex-column flex-lg-row">
+                        <div>
+                            <h2>Приложения</h2>
+                            <ul>
+                                <li>Контент: создание, редактирование, удаление новостей и статических страниц, категорий и т.д.</li>
+                                <li>Идентификация пользователя: управление пользователями, учетными записями и алгоритмами авторизации, регистрации</li>
+                                <li>Пользовательские профили: расширенная система пользовательских профилей, страниц, личных сообщений и т.д.</li>
+                                <li>Обратная связь: классическая система запрос-ответ для пользовательской обратной связи</li>
+                                <li>Поиск: глобальный поиск по содержимому сайта</li>
+                                <li>Карта сайта: генерация карты сайта для поисковых машин и роботов</li>
+                            </ul>
+                            <p>Множество прочих приложений могут быть установлены из магазина расширений ffcms.store.</p>
+                        </div>
+                        <img src="images/extension-ico.png" alt="extension icon" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0 d-none d-sm-block" style="max-width: 250px;">
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="widgets">
+                    <div class="d-flex flex-column flex-lg-row">
+                        <img src="images/widget-ico.png" alt="widget icon" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0d-none d-none d-sm-block" style="max-width: 250px;">
+                        <div>
+                            <h2>Виджеты</h2>
+                            <ul>
+                                <li>Комментарии: полная реализация системы комментариев и механизма управления ими</li>
+                                <li>Теги: отображение и управление популярных тегов из приложения контент</li>
+                                <li>Новые материалы: отображение и управление новыми элементами контента(новости) из приложения контент</li>
+                                <li>Популярные материалы: отображение и управление популярными элементами контента из приложения контент</li>
+                                <li>Новые комментарии: отображение списка новых комментариев</li>
+                            </ul>
+                            <p>Множество других виджетов могут быть установлены из магазина расширений ffcms.store. Обычно виджеты не работают как обособленные расширения, а взаимодействуют с приложениями или базовыми возможностями системы.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="images/ffcms-admin-main.png" alt="ffcms admin" class="img-fluid">
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <div>
+                        <div class="box-icon"><i class="fa fa-check gradient-fill fa-3x"></i></div>
+                        <h2>Запустите сайт на FFCMS</h2>
+                        <p class="mb-4">Существует 3 простых способа запуска сайта на ffcms: composer, docker и legacy (автономный установщик). Ознакомьтесь с инструкцией по установке каждым из способов!</p>
+                        <a href="#launch-way" class="btn btn-primary">Подробней</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="section-title">
+                <small>Сравнение производительности</small>
+                <h3>FFCMS vs другие CMS</h3>
+            </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>CMS</th>
+                            <th>Версия</th>
+                            <th>Время загрузки, мс</th>
+                            <th>Запросы/сек</th>
+                            <th>Размер файлов, mb</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>FFCMS</td>
+                            <td>3.1.0</td>
+                            <td>0.031</td>
+                            <td>29.8</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>Wordpress</td>
+                            <td>5.0.3</td>
+                            <td>0.016</td>
+                            <td>53</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>Bitrix standard</td>
+                            <td>18.1.5</td>
+                            <td>?</td>
+                            <td>?</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>Joomla</td>
+                            <td>4</td>
+                            <td>?</td>
+                            <td>?</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>ModX</td>
+                            <td>3</td>
+                            <td>?</td>
+                            <td>?</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>UMI.CMS</td>
+                            <td>3</td>
+                            <td>?</td>
+                            <td>?</td>
+                            <td>?</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+
+    <div class="section light-bg" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <small>Демонстраций некоторых интерфейсов системы</small>
+                <h3>FFCMS скриншоты</h3>
+            </div>
+
+            <div class="img-gallery owl-carousel owl-theme">
+                <a href="images/screens/screen1.png" target="_blank"><img src="images/screens/screen1_thumb.jpg" alt="main website ui"></a>
+                <a href="images/screens/screen2.png" target="_blank"><img src="images/screens/screen2_thumb.jpg" alt="main website ui"></a>
+                <a href="images/screens/screen3.png" target="_blank"><img src="images/screens/screen3_thumb.jpg" alt="main website ui"></a>
+                <a href="images/screens/screen4.png" target="_blank"><img src="images/screens/screen4_thumb.jpg" alt="main admin ui"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section light-bg" id="launch-way">
+        <div class="container">
+            <div class="text-center mb-5"><h2>Загрузка и установка</h2></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Composer</h3>
+                    <small class="text-secondary">* Для production среды</small>
+                    <ul class="list-unstyled ui-steps">
+                        <li class="media">
+                            <div class="circle-icon mr-2">1</div>
+                            <div class="media-body">
+                                <h5>Установите composer</h5>
+                                <p>Следуйте инструкциям на официальном сайте composer'а и выполните установку.</p>
+                                <p><a href="https://getcomposer.org/" target="_blank">getcomposer.org</a></p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="circle-icon mr-2">2</div>
+                            <div class="media-body">
+                                <h5>Инициация проекта</h5>
+                                <p>Создайте пустой проект ffcms при помощи composer'а.</p>
+                                <code>composer create-project phpffcms/ffcms ./path/to/document_root 3.1.0 --keep-vcs --prefer-dist</code>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="circle-icon mr-2">3</div>
+                            <div class="media-body">
+                                <h5>Выполните установку системы</h5>
+                                <p>В браузере при помощи web UI:</p>
+                                <p><code>http://yourwebsite/install</code></p>
+                                <p>или в консоли при помощи командной строки:</p>
+                                <p><code>php console.php main:install</code></p>
+
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="circle-icon mr-2">4</div>
+                            <div class="media-body">
+                                <h5>Готово!</h5>
+                                <p>Установка завершена, вы молодец!</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3>Docker</h3>
+                    <small class="text-secondary">* Для developer среды</small>
+                    <ul class="list-unstyled ui-steps">
+                        <li class="media">
+                            <div class="circle-icon mr-2">1</div>
+                            <div class="media-body">
+                                <h5>Установите docker</h5>
+                                <p>Загрузите и установите docker community с официального сайта следуя инструкции.</p>
+                                <p><a href="https://www.docker.com/community-edition" target="_blank">docker.com</a></p>
+                            </div>
+                        </li>
+                        <li class="media my-4">
+                            <div class="circle-icon mr-2">2</div>
+                            <div class="media-body">
+                                <h5>Загрузите проект под docker</h5>
+                                <p>Клонируйте проект при помощи git консоли с github.</p>
+                                <p><code>git clone https://github.com/phpffcms/docker-dev.git</code></p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="circle-icon mr-2">3</div>
+                            <div class="media-body">
+                                <h5>Запустите контейнер</h5>
+                                <p>Выполните запуск компоновщика docker и запустите рабочий проект ffcms</p>
+                                <code>docker-compose up -d</code>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="circle-icon mr-2">4</div>
+                            <div class="media-body">
+                                <h5>Настройки по умолчанию</h5>
+                                <p>Стандартная учетная запись администратора: </p>
+                                <pre><code lang="ini">login: admin
+password: admin</code>
+                                </pre>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Legacy установка (автономная)</h3>
+                    <p>Данный вариант является устаревшим на данный момент и не рекомендуется для современных веб-сайтов. Скачайте готовый .zip архив, распакуйте его в корневую папку вашего сайта <code>public_html</code> и запустите <code>http://yourwebsite/install/</code> в браузере.</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#downloadModal">Скачать ffcms.zip</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section bg-gradient" id="news">
+        <div class="container">
+            <div class="section-title">
+                <h3>Новости проекта</h3>
+                <small>В данном разделе можно найти последние новости нашего проекта! Присоединяйтесь! </small>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Dev news</h3>
+                    <ul>
+                        <li><a href="#">Test news title with some content #1</a></li>
+                        <li><a href="#">Test news title with some content #2</a></li>
+                        <li><a href="#">Test news title with some content #3</a></li>
+                        <li><a href="#">Test news title with some content #4</a></li>
+                        <li><a href="#">Test news title with some content #5</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <h3>Github issues</h3>
+                    <ul>
+                        <li><a href="#">Test forum topic title with content #1</a></li>
+                        <li><a href="#">Test forum topic title with content #2</a></li>
+                        <li><a href="#">Test forum topic title with content #3</a></li>
+                        <li><a href="#">Test forum topic title with content #4</a></li>
+                        <li><a href="#">Test forum topic title with content #5</a></li>
+                    </ul>
+                </div>
+            </div>
+            <h2 class="mt-5">Новые расширения</h2>
+            <div class="img-gallery owl-carousel owl-theme">
+                <a href="images/ext_example.png" target="_blank"><img src="images/ext_example.png" alt="example"></a>
+                <a href="images/ext_example.png" target="_blank"><img src="images/ext_example.png" alt="example"></a>
+                <a href="images/ext_example.png" target="_blank"><img src="images/ext_example.png" alt="example"></a>
+                <a href="images/ext_example.png" target="_blank"><img src="images/ext_example.png" alt="example"></a>
+                <a href="images/ext_example.png" target="_blank"><img src="images/ext_example.png" alt="example"></a>
+                <a href="images/ext_example.png" target="_blank"><img src="images/ext_example.png" alt="example"></a>
+                <a href="images/ext_example.png" target="_blank"><img src="images/ext_example.png" alt="example"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="light-bg py-5" id="contact">
+        <div class="container">
+            <h2>Связь с нами</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p>Разработчик: Пятинский Михаил</p>
+                    <p><span class="fa fa-envelope"></span> <a href="mailto:zenn@ffcms.org">zenn@ffcms.org</a></p>
+                    <p><span class="fa fa-telegram"></span> <a href="https://telegram.me/ffcms">@zenn1989</a></p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="float-right">
+                                <a href="https://dev.ffcms.org/ru/feedback/create" target="_blank" class="btn btn-primary">Обратная связь</a>
+                                <a href="https://github.com/phpffcms/ffcms/issues" target="_blank" class="btn btn-primary">Баг-репорт</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-icons pt-5">
+                        <a href="https://github.com/phpffcms" target="_blank"><span class="fa fa-github-alt"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- // end .section -->
+
+    <footer class="my-5 text-center">
+        <p class="mb-2"><small>COPYRIGHT © 2014-2019. FFCMS developer group.</small></p>
+
+        <small>
+            <a href="#" data-toggle="modal" data-target="#mitModal" class="m-2">ЛИЦЕНЗИЯЫ</a>
+        </small>
+    </footer>
+
+
+    <!-- MIT license modal -->
+    <div class="modal fade" id="mitModal" tabindex="-1" role="dialog" aria-labelledby="mitModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mitModalLabel">FFCMS License</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>The MIT License (MIT)</p>
+                    <p>Copyright (c) 2015-2018 FFCMS, Pyatinskiy Mihail</p>
+
+                    <p>Permission is hereby granted, free of charge, to any person obtaining a copy
+                    of this software and associated documentation files (the "Software"), to deal
+                    in the Software without restriction, including without limitation the rights
+                    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                    copies of the Software, and to permit persons to whom the Software is
+                    furnished to do so, subject to the following conditions:</p>
+
+                    <p>The above copyright notice and this permission notice shall be included in all
+                        copies or substantial portions of the Software.</p>
+
+                    <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+                    SOFTWARE.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Archive download modal -->
+    <div class="modal fade" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="downloadModalLabel">Download FFCMS standalone</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Usage of standalone .zip archive is deprecated way for now. We are strongly recommend you to use composer or docker.</p>
+                    <p>But any way if you want to continue use standalone version - download zip archive and use manual installation guide.</p>
+                    <a href="#" class="btn btn-danger">Download ffcms.zip</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery and Bootstrap -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Plugins JS -->
+    <script src="js/owl.carousel.min.js"></script>
+    <!-- highlight js -->
+    <script src="js/highlight.min.js"></script>
+    <!-- default js code -->
+    <script src="js/script.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
